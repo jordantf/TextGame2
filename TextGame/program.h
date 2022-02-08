@@ -23,10 +23,12 @@ private:
 	// Player actions
 	void move(vector<string> v);
 	void look(vector<string> v);
+	void help(vector<string> v);
 	void get(vector<string> v);
 	void inventory(vector<string> v);
 	void drop(vector<string> v);
 	void special(vector<string> v, Item* item);
+	void restart(vector<string> v);
 
 	// Helper functions for actions
 	void look_at(string noun);

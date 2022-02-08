@@ -8,7 +8,7 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "If this is your first time playing, type HELP. Good luck!" << std::endl;
 
     while (1) {
         Program program;

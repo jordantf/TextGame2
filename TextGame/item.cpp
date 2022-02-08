@@ -7,22 +7,22 @@ Item::Item() {
 	this->name = "";
 	this->shortDesc = "";
 	this->longDesc = "";
-	this->canGet = false;
-	this->isHidden = false;
+	this->getState = 0;
+	this->hiddenState = 0;
 	this->isPerson = false;
 	this->specs = {};
 }
 
 
-Item::Item(int itemID, int roomID, vector<string> nouns, string name, string shortDesc, string longDesc, bool canGet, bool isHidden, bool isPerson, map<string,int> specs) {
+Item::Item(int itemID, int roomID, vector<string> nouns, string name, string shortDesc, string longDesc, int getState, int hiddenState, bool isPerson, map<string,int> specs) {
 	this->itemID = itemID;
 	this->roomID = roomID;
 	this->nouns = nouns;
 	this->name = name;
 	this->shortDesc = shortDesc;
 	this->longDesc = longDesc;
-	this->canGet = canGet;
-	this->isHidden = isHidden;
+	this->getState = getState;
+	this->hiddenState = hiddenState;
 	this->isPerson = isPerson;
 	this->specs = specs;
 }
@@ -51,12 +51,12 @@ string Item::getLongDesc() {
 	return this->longDesc;
 }
 
-bool Item::getCanGet() {
-	return this->canGet;
+int Item::getGetState() {
+	return this->getState;
 }
 
-bool Item::getIsHidden() {
-	return this->isHidden;
+int Item::getHiddenState() {
+	return this->hiddenState;
 }
 
 bool Item::getIsPerson() {
@@ -112,12 +112,12 @@ void Item::setLongDesc(string longDesc) {
 	this->longDesc = longDesc;
 }
 
-void Item::setCanGet(bool canGet) {
-	this->canGet = canGet;
+void Item::setGetState(int getState) {
+	this->getState = getState;
 }
 
-void Item::setIsHidden(bool isHidden) {
-	this->isHidden = isHidden;
+void Item::setHiddenState(int hiddenState) {
+	this->hiddenState = hiddenState;
 }
 
 void Item::setIsPerson(bool isPerson) {

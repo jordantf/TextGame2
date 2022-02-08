@@ -9,6 +9,7 @@
 using namespace std;
 
 class Room {
+	// todo: room is DT
 	int roomID;
 	string name;
 	string description;
