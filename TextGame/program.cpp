@@ -91,40 +91,48 @@ void Program::run() {
 
 void Program::setupWorld() {
     string r1desc =
-        "A torrent of cascading molten rock flows swiftly from the falls behind you,\n"
+        "You find yourself in what appears to be some sort of pyroclastic grotto.\n"
+        "A torrent of cascading molten rock flows swiftly from a cliff behind you,\n"
         "superheating the ground and scorching it black as it lands. Ash swirls\n"
         "through the cavern as unseen air currents flow in no discernible pattern,\n"
-        "cycling the immeasurable amount of soot back up to higher elevations. Every\n"
+        "cycling immeasurable amounts of soot back up to higher elevations. Every\n"
         "time you stop to take a breath, you are reminded of the inhospitability of\n"
-        "this place, and decide it would be prudent to get a move on, quickly. The\n"
-        "cavern ledge continues to the east.";
+        "this place, and decide it would be prudent to get a move on, quickly. A\n"
+        "small ledge continues to the east.";
 
     string r2desc =
-        "The rocky ledge comes to an end here at a nice vantage point, from where\n"
-        "you can make out many of the terrain's surrounding features. Far below,\n"
-        "bubbling pools of magma froth violently as they draw heat from further\n"
-        "beneath the surface. The safety of the ledge lies back to the west, while\n"
-        "to the east there is nothing but air, and a long way down.";
-
-    string r3desc =
-        "Holding your breath, you step fearlessly off the edge of the cliff...";
-
-    string r4desc =
         "The rocky promontory you stand on continues to travel east-west along the\n"
         "mountain, but also curves sharply to the north here, where in the side of\n"
         "the rocky face you can make out an ancient stone door. The ash in the air\n"
         "is beginning to become more manageable, but it is still swelteringly hot.";
 
-    string r5desc =
-        "This north-south passage is old and musty from years of neglect.";
+    string r3desc =
+        "The rocky ledge rises slightly in elevation here, and comes to an end at\n"
+        "what appears to be some sort of vantage point for the underdark. However,\n"
+        "it appears that a large boulder has recently fallen from the cliffside up\n"
+        "above, conveniently blocking any further progress to the east. Good thing,\n"
+        "too, because that first step off the ledge looks like a doozy. The path\n"
+        "seems to become less treacherous back to the west, where the safety of the\n"
+        "mountain beckons.";
+        
+        // Steam from the magma pools below rises up and out of a large hole in the ceiling of the cavern."
+
+    string r4desc =
+        "This north-south hallway is old and musty from years of neglect, but seems\n"
+        "peculiarly luminiferous given its location deep within the mountainside.\n"
+        "A cursory inspection of your surroundings reveals that the walls themselves\n"
+        "appear to be responsible for the preternatural brightness, though it isn't\n"
+        "immediately clear why. The dim glow does, however, reveal segments of the\n"
+        "walls where mortar has begun to flake and crack, casting doubt on the\n"
+        "safety of these passages and the robustness of their construction.";
 
     string r6desc =
         "The tunnel begin to narrow here as it continues further into the mountain.\n"
         "Peculiarly, however, the passage does not seem to be getting that much\n"
         "darker. A cursory inspection of your surroundings reveals that the walls\n"
         "themselves appear to be glowing with unnatural light, though it isn't\n"
-        // "immediately clear why. The passage continues to the north.";
-        "immediately clear why. The passage seems to end at a larger wall up ahead.";
+        "immediately clear why. The passage continues to the north, where it seems\n"
+        "to end at a larger wall up ahead.";
 
     string r7desc =
         "Your wings save you from plummeting to your doom! To the west lies victory,\n"
@@ -139,26 +147,30 @@ void Program::setupWorld() {
     string r10desc =
         "The passage ends at a large wall.";
 
-    Room* r1 = new Room(1, "The Lava Falls", r1desc, -1, 4, -1, -1, -1, -1);
-    Room* r2 = new Room(2, "A Rocky Ledge", r2desc, -1, 3, -1, 4, -1, -1);
-    Room* r3 = new Room(3, "Above the Magma Pools", r3desc, -1, -1, -1, 2, -1, 7);
-    Room* r4 = new Room(4, "Before an Ancient Stone Door", r4desc, -1, 2, -1, 1, -1, -1);
-    Room* r5 = new Room(5, "A Long Forgotten Passage", r5desc, 6, -1, 4, -1, -1, -1);
-    Room* r6 = new Room(6, "The Passage Continues", r6desc, 10, -1, 5, -1, -1, -1);
-    Room* r7 = new Room(7, "Mid-Air Over Magma", r7desc, -1, -1, -1, 9, 3, 8);
-    Room* r8 = new Room(8, "Death by Magma", r8desc, -1, -1, -1, -1, 7, -1);
-    Room* r9 = new Room(9, "Victory!", r9desc, -1, 8, -1, -1, -1, -1);
-    Room* r10 = new Room(10, "A Split in the Passage", r10desc, -1, -1, 6, -1, -1, -1);
+    Room* r1 = new Room(1, "The Lava Falls", r1desc, -1, 2, -1, -1, -1, -1);
+    Room* r2 = new Room(2, "Before an Ancient Stone Door", r2desc, -1, 3, -1, 1, -1, -1);
+    Room* r3 = new Room(3, "The Edge of a Ledge", r3desc, -1, -1, -1, 2, -1, -1);
+    Room* r4 = new Room(4, "A Long Forgotten Passage", r4desc, -1, -1, 2, -1, -1, -1);
+
+
+    // Room* r3 = new Room(3, "Above the Magma Pools", r3desc, -1, -1, -1, 4, -1, 7);
+    // Room* r4 = new Room(4, "A Rocky Ledge", r4desc, -1, -1, -1, 2, -1, -1);
+    // Room* r5 = new Room(5, "A Long Forgotten Passage", r5desc, 6, -1, 2, -1, -1, -1);
+    // Room* r6 = new Room(6, "The Passage Continues", r6desc, 10, -1, 5, -1, -1, -1);
+    // Room* r7 = new Room(7, "Mid-Air Over Magma", r7desc, -1, -1, -1, 9, 3, 8);
+    // Room* r8 = new Room(8, "Death by Magma", r8desc, -1, -1, -1, -1, 7, -1);
+    // Room* r9 = new Room(9, "Victory!", r9desc, -1, 8, -1, -1, -1, -1);
+    // Room* r10 = new Room(10, "A Split in the Passage", r10desc, -1, -1, 6, -1, -1, -1);
     room_list.push_back(r1);
     room_list.push_back(r2);
     room_list.push_back(r3);
     room_list.push_back(r4);
-    room_list.push_back(r5);
-    room_list.push_back(r6);
-    room_list.push_back(r7);
-    room_list.push_back(r8);
-    room_list.push_back(r9);
-    room_list.push_back(r10);
+    // room_list.push_back(r5);
+    // room_list.push_back(r6);
+    // room_list.push_back(r7);
+    // room_list.push_back(r8);
+    // room_list.push_back(r9);
+    // room_list.push_back(r10);
 
     string sItemDesc1 =
         "A crumpled piece of paper flutters on an unseen breeze.";
@@ -193,16 +205,17 @@ void Program::setupWorld() {
         "The faces of the coin gleam with a magnificent lustre.";
 
     string lItemDesc5 =
-        "The wall you see before you is covered from top to bottom with countless\n"
-        "inscriptions, and a particularly large section in the center of the wall\n"
-        "glows with an unnatural light, as if by magic. It appears some of the\n"
+        "The walls you see before you are covered from top to bottom with countless\n"
+        "inscriptions, and a particularly large section in the center of the western\n"
+        "wall glows with an unnatural light, as if by magic. It appears some of the\n"
         "writing may be intelligible, if you were to look at the writing directly.";
 
     string sItemDesc6 = // unused
         "Flowing and glowing scripture illuminates the walls of the tunnel.";
 
     string lItemDesc6 =
-        "The scripture on the wall appears to spell out a person's name.";
+        "The glowing scripture on the wall illuminates a loose block, but also\n"
+        "appears to spell out a person's name.";
 
     string lItemDesc7 =
         "The name appears to be that of this game's creator. It reads, 'Jordan'.";
@@ -224,6 +237,7 @@ void Program::setupWorld() {
     string sItemDesc10 =
         "An enchanted pair of eagle's wings rest here in the treasure room.";
 
+    /*
     string lItemDesc10 =
         "You gaze upon an unassuming pair of waxen bird wings. It is said that long\n"
         "ago, a similar pair of wings was fashioned by Daedalus for his son, Icarus,\n"
@@ -236,25 +250,40 @@ void Program::setupWorld() {
         "the wax even slightly. You think these would make an excellent mode of\n"
         "transport around here, and possibly aid you in escaping this place.\n\n"
         "(Having these in your inventory grants the power of flight.)";
+        */
+
+    string lItemDesc10 =
+        "The mortar of the ancient stonework has begun to peel and flake away in\n"
+        "chunks, exposing the edges of the individual blocks which form the walls of\n"
+        "the passageway. Interestingly, there seems to be one particular block that\n"
+        "is jutting much further out of the western wall than the rest.";
+
+    string lItemDesc11 =
+        "It looks like this block could be pushed inward to lie flush with the wall.";
 
     // Item* item1 = new Item(1, 3, { "paper", "folded", "parchment", "crumpled" }, "a crumpled piece of paper", sItemDesc1, lItemDesc1, true, 2, false, {});
     map<string, int> map;
     map["push"] = 1;
     map["bash"] = 2;
-    map["open"] = 5;
-    Item* item2 = new Item(2, 4, { "door", "stone", "ancient" }, "the ancient stone door", sItemDesc2, lItemDesc2, false, 0, false, map);
+    map["pull"] = 3;
+    map["open"] = 3;
+    Item* item2 = new Item(2, 2, { "door", "stone", "ancient" }, "the ancient stone door", sItemDesc2, lItemDesc2, false, 0, false, map);
     map = {};
-    map["listen"] = 3;
-    Item* item3 = new Item(3, 5, { "lost", "adventurer" }, "the lost adventurer", sItemDesc3, lItemDesc3, false, 0, true, map);
+    map["listen"] = 4;
+    Item* item3 = new Item(3, 4, { "lost", "adventurer" }, "the lost adventurer", sItemDesc3, lItemDesc3, false, 0, true, map);
     map = {};
-    map["insert"] = 4;
+    // map["insert"] = 5;
     Item* item4 = new Item(4, -1, { "coin", "small", "platinum", "tiny" }, "a tiny platinum coin", sItemDesc4, lItemDesc4, 1, 0, false, map);
-    Item* item5 = new Item(5, 6, { "wall", "walls", "glowing" }, "the glowing wall", "", lItemDesc5, 0, 2, false, {});
-    Item* item6 = new Item(6, 6, { "scripture", "writing", "inscription", "inscriptions"}, "the writing on the wall", "", lItemDesc6, 0, 3, false, {});
-    Item* item7 = new Item(7, 6, { "name" }, "the name spelled out on the wall", "", lItemDesc7, 0, 3, false, {});
-    Item* item8 = new Item(8, 4, { "plaque" }, "the plaque on the door", "", lItemDesc8, 0, 3, false, {});
-    Item* item9 = new Item(9, 4, { "carvings", "carving", "deities" }, "the carvings on the door", "", lItemDesc9, 0, 3, false, {});
-    Item* item10 = new Item(10, -1, { "wings", "enchanted", "eagle", "eagle's", "pair" }, "an enchanted pair of eagle's wings", sItemDesc10, lItemDesc10, 1, 0, false, {});
+    Item* item5 = new Item(5, 4, { "wall", "walls", "glowing" }, "the glowing walls", "", lItemDesc5, 0, 3, false, {});
+    Item* item6 = new Item(6, 4, { "scripture", "writing", "inscription", "inscriptions"}, "the writing on the wall", "", lItemDesc6, 0, 3, false, {});
+    Item* item7 = new Item(7, 4, { "name" }, "the name spelled out on the wall", "", lItemDesc7, 0, 3, false, {});
+    Item* item8 = new Item(8, 2, { "plaque" }, "the plaque on the door", "", lItemDesc8, 0, 3, false, {});
+    Item* item9 = new Item(9, 2, { "carvings", "carving", "deities" }, "the carvings on the door", "", lItemDesc9, 0, 3, false, {});
+    Item* item10 = new Item(10, 4, { "mortar" }, "the flaking mortar", "", lItemDesc10, 0, 3, false, {});
+    map = {};
+    map["push"] = 5;
+    Item* item11 = new Item(11, 4, { "block" }, "the block sticking out of the western wall", "", lItemDesc11, 0, 3, false, map);
+    // Item* item10 = new Item(10, -1, { "wings", "enchanted", "eagle", "eagle's", "pair" }, "an enchanted pair of eagle's wings", sItemDesc10, lItemDesc10, 1, 0, false, {});
 
     // item_list.push_back(item1);
     item_list.push_back(item2);
@@ -266,6 +295,7 @@ void Program::setupWorld() {
     item_list.push_back(item8);
     item_list.push_back(item9);
     item_list.push_back(item10);
+    item_list.push_back(item11);
 
     // STARTING ROOM
     currentRoom = r1;
@@ -749,8 +779,8 @@ void Program::special(vector<string> v, Item* item) {
                         cout << "\nYou bash on the door, and it falls over, revealing a passage to the north.\n"
                             "Its riddle solved, the plaque falls from the door and shatters!" << endl;
                         for (int i = 0; i < room_list.size(); i++) {
-                            if (room_list[i]->getRoomID() == 4) {
-                                room_list[i]->setN(5);
+                            if (room_list[i]->getRoomID() == 2) {
+                                room_list[i]->setN(4);
                                 string newDesc =
                                     "The rocky promontory you stand on continues to travel east-west along the\n"
                                     "mountain, but also curves sharply to the north here, where in the side of\n"
@@ -791,6 +821,19 @@ void Program::special(vector<string> v, Item* item) {
             if (v.size() >= 2) {
                 for (int i = 0; i < item->getNouns().size(); i++) {
                     if (v[1] == item->getNouns()[i]) {
+                        cout << "\nYou're not sure how you'd do that given the door has no handles." << endl;
+                        return;
+                    }
+                }
+            }
+            cout << "\nHuh?!" << endl;
+            return;
+        }
+        case 4: {
+            // ignoreOutput(v, 2);
+            if (v.size() >= 2) {
+                for (int i = 0; i < item->getNouns().size(); i++) {
+                    if (v[1] == item->getNouns()[i]) {
                         string specMsg =
                             "\nFinally noticing you as you approach, the adventurer begins to speak.\n\n"
                             "        Hello there. I suppose you're wondering how I ended up here. Well,\n"
@@ -804,7 +847,8 @@ void Program::special(vector<string> v, Item* item) {
                             "    it for days, but I didn't know a bash would knock it down! Thanks for\n"
                             "    opening the way back out, now if you'll excuse me, I really need to get\n"
                             "    out of here...\n\n"
-                            "The adventurer pushes past you to the south, heading for the lava falls.";
+                            "The adventurer pushes past you to the south, heading for the lava falls.\n"
+                            "You think it may be worth following him.";
                         cout << specMsg << endl;
                         item->setRoomID(1);
                         return;
@@ -814,7 +858,48 @@ void Program::special(vector<string> v, Item* item) {
             cout << "\nHuh?!" << endl;
             return;
         }
-        case 4: {
+        case 5: {
+            // PUSH BLOCK
+            if (v.size() == 2) {
+                for (int i = 0; i < item->getNouns().size(); i++) {
+                    if (v[1] == item->getNouns()[i]) {
+                        string specMsg =
+                            "\nSeeing the loose block, you decide to push it back into the wall.\n\n"
+                            "For a few moments, nothing happens. Then, all of a sudden, a part.\n"
+                            "of the eastern wall retracts, revealing a set of stairs leading up\n"
+                            "into darkness.";
+                        cout << specMsg << endl;
+                        for (int j = 0; j < item_list.size(); j++) {
+                            if (item_list[j]->getItemID() == 6) {
+                                string lItemDesc6 =
+                                    "The scripture on the wall appears to spell out a person's name.";
+                                item_list[j]->setLongDesc(lItemDesc6);
+                            }
+                            if (item_list[j]->getItemID() == 10) {
+                                string lItemDesc10 =
+                                    "The mortar of the ancient stonework has begun to peel and flake away in\n"
+                                    "chunks, exposing the edges of the individual blocks which form the walls of\n"
+                                    "the passageway.";
+                                item_list[j]->setLongDesc(lItemDesc10);
+                            }
+                            if (item_list[j]->getItemID() == 11) {
+                                item_list[j]->setNouns({ "block", "blocks" });
+                                item_list[j]->setName("the blocks comprising the western wall");
+                                string lItemDesc11 = "The wall blocks are now perfectly flush, and otherwise uninteresting.";
+                                item_list[j]->setLongDesc(lItemDesc11);
+                            }
+                        }
+                        return;
+                    }
+                }
+            }
+            cout << "\nHuh?!" << endl;
+            return;
+        }
+
+        // INSERT COIN CASE
+        /*
+        case 6: {
             // ignoreOutput(v, 3);
             if (v.size() >= 3) {
                 for (int i = 0; i < item->getNouns().size(); i++) {
@@ -839,19 +924,7 @@ void Program::special(vector<string> v, Item* item) {
             cout << "\nHuh?!" << endl;
             return;
         }
-        case 5: {
-            // ignoreOutput(v, 2);
-            if (v.size() >= 2) {
-                for (int i = 0; i < item->getNouns().size(); i++) {
-                    if (v[1] == item->getNouns()[i]) {
-                        cout << "\nYou're not sure how you'd do that given the door has no handles." << endl;
-                        return;
-                    }
-                }
-            }
-            cout << "\nHuh?!" << endl;
-            return;
-        }
+        */
         default: {
             cout << "\nError!" << endl;
             break;
@@ -888,6 +961,9 @@ void Program::checkSpecs() {
             }
         }
     }
+
+    // SPEC FOR WALKING OFF CLIFF
+    /*
     if (currentRoom->getRoomID() == 3) {
         for (int i = 0; i < item_list.size(); i++) {
             if (item_list[i]->getItemID() == 10) { // TODO: CHANGE ITEM ID TO SAFETY ITEM e.g. WINGS OF FLIGHT
@@ -900,10 +976,15 @@ void Program::checkSpecs() {
         cout << specMsg << endl;
         game_over = true;
     }
+    */
+
+    // DEATH SPECS (ADD DEATH FLAG TO ROOM INSTEAD?)
+    /*
     if (currentRoom->getRoomID() == 8) {
         game_over = true;
     }
     if (currentRoom->getRoomID() == 9) {
         game_over = true;
     }
+    */
 }
