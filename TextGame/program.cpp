@@ -77,17 +77,16 @@ void Program::run() {
         */
         checkSpecs();
         if (game_over) {
-            break;
+            cout << "\nGAME OVER\nPress any key to try again!" << endl;
+            std::getchar();
+            std::cout << "Space-time rewinds, and you feel yourself pulled back to a familiar place..." << endl;
+            return;
         }
         printExits();
         moved = false;
         std::getline(cin, userInput);
         parseCommand(toLower(userInput));
 	}
-
-    cout << "\nGAME OVER\nPress any key to try again!" << endl;
-    std::getchar();
-    std::cout << "Space-time rewinds, and you feel yourself pulled back to a familiar place..." << endl;
 }
 
 void Program::setupWorld() {
@@ -125,7 +124,7 @@ void Program::setupWorld() {
         "darker. A cursory inspection of your surroundings reveals that the walls\n"
         "themselves appear to be glowing with unnatural light, though it isn't\n"
         // "immediately clear why. The passage continues to the north.";
-        "immediately clear why. There is a slot here, too tiny to look at.";
+        "immediately clear why. The passage seems to end at a larger wall up ahead.";
 
     string r7desc =
         "Your wings save you from plummeting to your doom! To the west lies victory,\n"
@@ -137,15 +136,19 @@ void Program::setupWorld() {
     string r9desc =
         "You have made it out of the Magma Escape Room alive! Congratulations.";
 
+    string r10desc =
+        "The passage ends at a large wall.";
+
     Room* r1 = new Room(1, "The Lava Falls", r1desc, -1, 4, -1, -1, -1, -1);
     Room* r2 = new Room(2, "A Rocky Ledge", r2desc, -1, 3, -1, 4, -1, -1);
     Room* r3 = new Room(3, "Above the Magma Pools", r3desc, -1, -1, -1, 2, -1, 7);
     Room* r4 = new Room(4, "Before an Ancient Stone Door", r4desc, -1, 2, -1, 1, -1, -1);
     Room* r5 = new Room(5, "A Long Forgotten Passage", r5desc, 6, -1, 4, -1, -1, -1);
-    Room* r6 = new Room(6, "The Passage Continues", r6desc, -1, -1, 5, -1, -1, -1);
+    Room* r6 = new Room(6, "The Passage Continues", r6desc, 10, -1, 5, -1, -1, -1);
     Room* r7 = new Room(7, "Mid-Air Over Magma", r7desc, -1, -1, -1, 9, 3, 8);
     Room* r8 = new Room(8, "Death by Magma", r8desc, -1, -1, -1, -1, 7, -1);
     Room* r9 = new Room(9, "Victory!", r9desc, -1, 8, -1, -1, -1, -1);
+    Room* r10 = new Room(10, "A Split in the Passage", r10desc, -1, -1, 6, -1, -1, -1);
     room_list.push_back(r1);
     room_list.push_back(r2);
     room_list.push_back(r3);
@@ -155,6 +158,7 @@ void Program::setupWorld() {
     room_list.push_back(r7);
     room_list.push_back(r8);
     room_list.push_back(r9);
+    room_list.push_back(r10);
 
     string sItemDesc1 =
         "A crumpled piece of paper flutters on an unseen breeze.";
@@ -381,6 +385,7 @@ void Program::restart(vector<string> v) {
         cout << "\nYou have to type 'restart' - no less - to restart!" << endl;
         return;
     } else {
+        std::cout << "\nSpace-time rewinds, and you feel yourself pulled back to a familiar place..." << endl;
         game_over = true;
     }
 }
@@ -724,7 +729,7 @@ void Program::special(vector<string> v, Item* item) {
     // cout << v[0] << ", " << specNum << endl;
     switch (item->getSpecs().find(v[0])->second) {
         case 1: {
-            ignoreOutput(v, 2);
+            // ignoreOutput(v, 2);
             if (v.size() >= 2) {
                 for (int i = 0; i < item->getNouns().size(); i++) {
                     if (v[1] == item->getNouns()[i]) {
@@ -737,7 +742,7 @@ void Program::special(vector<string> v, Item* item) {
             return;
         }
         case 2: {
-            ignoreOutput(v, 2);
+            // ignoreOutput(v, 2);
             if (v.size() >= 2) {
                 for (int i = 0; i < item->getNouns().size(); i++) {
                     if (v[1] == item->getNouns()[i]) {
@@ -746,7 +751,15 @@ void Program::special(vector<string> v, Item* item) {
                         for (int i = 0; i < room_list.size(); i++) {
                             if (room_list[i]->getRoomID() == 4) {
                                 room_list[i]->setN(5);
-                                room_list[i]->setDescription("The rocky ledge now continues to the north.");
+                                string newDesc =
+                                    "The rocky promontory you stand on continues to travel east-west along the\n"
+                                    "mountain, but also curves sharply to the north here, where in the side of\n"
+                                    "the rocky face you can make out the entrance to a dark passage. The stony\n"
+                                    "crevice looks as though it once entertained a door of some sort, but in\n"
+                                    "the spot where it looks like the door should be, there is now nothing. The\n"
+                                    "ash in the air is beginning to become more manageable here, but it is\n"
+                                    "still swelteringly hot. You feel you should not tarry too much longer.";
+                                room_list[i]->setDescription(newDesc);
                             }
                         }
                         for (int j = 0; j < item_list.size(); j++) {
@@ -774,7 +787,7 @@ void Program::special(vector<string> v, Item* item) {
             return;
         }
         case 3: {
-            ignoreOutput(v, 2);
+            // ignoreOutput(v, 2);
             if (v.size() >= 2) {
                 for (int i = 0; i < item->getNouns().size(); i++) {
                     if (v[1] == item->getNouns()[i]) {
@@ -802,7 +815,7 @@ void Program::special(vector<string> v, Item* item) {
             return;
         }
         case 4: {
-            ignoreOutput(v, 3);
+            // ignoreOutput(v, 3);
             if (v.size() >= 3) {
                 for (int i = 0; i < item->getNouns().size(); i++) {
                     if (v[1] == item->getNouns()[i]) {
@@ -827,7 +840,7 @@ void Program::special(vector<string> v, Item* item) {
             return;
         }
         case 5: {
-            ignoreOutput(v, 2);
+            // ignoreOutput(v, 2);
             if (v.size() >= 2) {
                 for (int i = 0; i < item->getNouns().size(); i++) {
                     if (v[1] == item->getNouns()[i]) {
